@@ -3,41 +3,35 @@ version: "3.7"
 services:
   breedbase:
     image: breedbase/breedbase:latest
-    depends_on:
-      - breedbase_db
-    container_name: breedbase_web
+    container_name: breedbase_web_zymtronix
     ports:
-      - 8080:8080
+      - 8929:8080
     volumes:
-      - webdata:/home/production/volume
       - type: bind
-        source: /home/production/basesite/empty_db_without.test_users.sql
+        source: /export/prod/public_zymtronix
+        target: /home/production/volume
+      - type: bind
+        source: empty_db_without.test_users.sql
         target: /home/production/empty_dump.sql
 #      - type: bind
 #        source: /home/production/sgn
 #        target: /home/production/cxgn/sgn
       - type: bind
-        source: /home/production/basesite/sgn_local.conf
+        source: sgn_local.conf
         target: /home/production/cxgn/sgn/sgn_local.conf
       - type: bind
-        source: /home/production/db_dumps
+        source: db_dumps
         target: /db_dumps
       - type: bind
-        source: /home/production/basesite/crontab
+        source: crontab
         target: /etc/crontab
       - type: bind
         source: bash_history
         target: /home/production/.bash_history
-
-  breedbase_db:
-    image: breedbase/pg:latest
-    container_name: breedbase_db
-    volumes:
-      - dbdata:/var/lib/postgresql/data
-
-volumes:
-  webdata:
-  dbdata:
-
-
+      - type: bind
+        source: /home/production/zymtronix.breedbase.org/zymtronix_logo.png
+        target: /home/production/cxgn/sgn/static/img/zymtronix_logo.png
+      - type: bind
+        source: /home/production/zymtronix.breedbase.org/mason
+        target: /home/production/cxgn/zymtronix/mason
 

@@ -29,8 +29,8 @@ services:
         source: bash_history
         target: /home/production/.bash_history
       - type: bind
-        source: /home/production/zymtronix.breedbase.org/zymtronix_logo.png
-        target: /home/production/cxgn/sgn/static/img/zymtronix_logo.png
+        source: /home/production/zymtronix.breedbase.org/zymtronix_logo.jpg
+        target: /home/production/cxgn/sgn/static/img/zymtronix_logo.jpg
       - type: bind
         source: /home/production/zymtronix.breedbase.org/mason
         target: /home/production/cxgn/zymtronix/mason

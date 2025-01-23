@@ -8,7 +8,7 @@ services:
       - 8929:8080
     volumes:
       - type: bind
-        source: /export/prod/public_zymtronix_test
+        source: /export/prod/public_zymtronix
         target: /home/production/volume
       - type: bind
         source: empty_db_without.test_users.sql
